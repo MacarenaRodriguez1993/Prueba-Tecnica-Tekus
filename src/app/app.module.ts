@@ -10,6 +10,7 @@ import { FormLoginComponent } from './Login/components/form-login/form-login.com
 import { NavbarComponent } from './Shared/navbar/navbar.component';
 import { FooterComponent } from './Shared/footer/footer.component';
 import { ListSubscriberComponent } from './Subscribers/components/list-subscriber/list-subscriber.component';
+import { AngularMaterialModule } from './angular-material/angular-material.module';
 
 @NgModule({
   declarations: [
@@ -19,14 +20,15 @@ import { ListSubscriberComponent } from './Subscribers/components/list-subscribe
     FormLoginComponent,
     NavbarComponent,
     FooterComponent,
-    ListSubscriberComponent
+    ListSubscriberComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    AngularMaterialModule,
   ],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}
