@@ -1,1 +1,11 @@
-<p>form-login works!</p>
+<form class="form-login" (ngSubmit)="onSubmit()" [formGroup]="authForm">
+  <mat-form-field>
+    <mat-label>UserName</mat-label>
+    <input type="text" matInput formControlName="UserName" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Password</mat-label>
+    <input type="password" matInput formControlName="Password" />
+  </mat-form-field>
+  <button type="submit" mat-raised-button color="primary">Sing in</button>
+</form>

@@ -1,1 +1,5 @@
-<p>login works!</p>
+<div class="login">
+  <h1>Welcome Login</h1>
+  {{ errorMessage }}
+  <app-form-login (loginEvent)="loginComponent($event)"></app-form-login>
+</div>
