@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable, map } from 'rxjs';
@@ -15,15 +15,25 @@ export class SubscribersService {
     return new HttpHeaders({ Authorization: `Bearer ${token}` });
   }
 
-  getAllSubscribers(): Observable<Subscriber[]> {
+  getAllSubscribers(
+    pageSize: number,
+    currentPage: number
+  ): Observable<Subscriber[]> {
     const headers = this.getHeaders();
+    const params = new HttpParams()
+      .set('page', (currentPage + 1).toString())
+      .set('count', pageSize.toString());
+    console.log(
+      `${environment.API_URL}subscribers?count=${pageSize}&page=${currentPage}`
+    );
     return this.http
       .get(`${environment.API_URL}subscribers`, {
         headers,
+        params,
       })
       .pipe(
         map((res: any) => {
-          return res.Data;
+          return res;
         })
       );
   }
