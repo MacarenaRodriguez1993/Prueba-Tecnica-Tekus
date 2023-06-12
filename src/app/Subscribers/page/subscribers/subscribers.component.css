@@ -2,3 +2,13 @@
   text-align: center;
   margin-top: 2em;
 }
+.mat-elevation-z8 {
+  width: 90%;
+  margin: auto;
+  margin-bottom: 5em;
+}
+table {
+  width: 100%;
+  text-align: start;
+  margin-bottom: 5em;
+}

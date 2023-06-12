@@ -21,3 +21,10 @@ export interface Subscriber {
   ConnectionState: number;
   Id: number;
 }
+
+export interface TableSubscriber {
+  Id: number;
+  Name: string;
+  Email: string;
+  CountryName: string;
+}

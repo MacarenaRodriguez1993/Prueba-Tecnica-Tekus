@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 
 import { Observable, map } from 'rxjs';
 import { environment } from 'src/environments/environment';
+import { Subscriber } from '../models/subscribers.interface';
 @Injectable({
   providedIn: 'root',
 })
@@ -14,12 +15,16 @@ export class SubscribersService {
     return new HttpHeaders({ Authorization: `Bearer ${token}` });
   }
 
-  getAllSubscribers(): Observable<any> {
+  getAllSubscribers(): Observable<Subscriber[]> {
     const headers = this.getHeaders();
-    return this.http.get(`${environment.API_URL}subscribers`, { headers }).pipe(
-      map((res: any) => {
-        return res;
+    return this.http
+      .get(`${environment.API_URL}subscribers`, {
+        headers,
       })
-    );
+      .pipe(
+        map((res: any) => {
+          return res.Data;
+        })
+      );
   }
 }
