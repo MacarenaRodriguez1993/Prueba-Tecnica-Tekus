@@ -23,12 +23,20 @@ export class SubscribersService {
 
   getAllSubscribers(
     pageSize: number,
-    currentPage: number
+    currentPage: number,
+    sortOrder: string,
+    sortType: number
   ): Observable<Subscriber[]> {
     const headers = this.getHeaders();
-    const params = new HttpParams()
+    let params = new HttpParams()
       .set('page', (currentPage + 1).toString())
       .set('count', pageSize.toString());
+    if (sortOrder) {
+      params = params
+        .set('sortOrder', sortOrder)
+        .set('sortType', sortType.toString());
+    }
+
     console.log(
       `${environment.API_URL}subscribers?count=${pageSize}&page=${currentPage}`
     );

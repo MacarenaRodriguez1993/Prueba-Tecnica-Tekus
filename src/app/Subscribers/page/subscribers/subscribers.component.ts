@@ -43,7 +43,12 @@ export class SubscribersComponent implements OnInit {
   }
   getSubscribers(): void {
     this.subsService
-      .getAllSubscribers(this.pageSize, this.currentPage)
+      .getAllSubscribers(
+        this.pageSize,
+        this.currentPage,
+        this.sortOrder,
+        this.sortType
+      )
       .subscribe((subs: any) => {
         console.log(subs.Data);
         this.countData = subs.Count;
@@ -70,5 +75,21 @@ export class SubscribersComponent implements OnInit {
   // Open Dialog CREATE SUBSCRIBERS
   openDialog() {
     this.dialog.open(DialogAddSubsComponent);
+  }
+  //Order BY NAME
+  sortByName(sortType: string): void {
+    this.sortType = sortType === 'asc' ? 0 : 1;
+    this.sortOrder = 'Name';
+    this.getSubscribersSorted();
+  }
+  //Order BY EMAIL
+  sortByEmail(sortType: string): void {
+    this.sortType = sortType === 'asc' ? 0 : 1;
+    this.sortOrder = 'Email';
+    this.getSubscribersSorted();
+  }
+  getSubscribersSorted(): void {
+    this.currentPage = 0;
+    this.getSubscribers();
   }
 }
