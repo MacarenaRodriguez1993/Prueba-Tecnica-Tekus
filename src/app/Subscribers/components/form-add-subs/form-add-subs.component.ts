@@ -22,11 +22,14 @@ export class FormAddSubsComponent implements OnInit {
       PhoneNumber: ['', Validators.required],
       JobTitle: ['', Validators.required],
       Area: ['', Validators.required],
-      Topics: [],
+      Topics: this.fb.array([]),
     });
   }
   getFormData(): void {
     //const formData = this.newSubsForm.value;
+    // const dataForApi = {
+    // Subscribers: [this.newSubsForm],
+    // };
     this.formDataEvent.emit(this.newSubsForm);
   }
 }

@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import { FormAddSubsComponent } from '../form-add-subs/form-add-subs.component';
 import { SubscribersService } from '../../services/subscribers.service';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-dialog-add-subs',
@@ -15,10 +16,12 @@ import { SubscribersService } from '../../services/subscribers.service';
 })
 export class DialogAddSubsComponent implements OnInit {
   formComponents: FormAddSubsComponent[] = [];
+  message: string = '';
   constructor(
     private componentFactoryResolver: ComponentFactoryResolver,
     private viewContainerRef: ViewContainerRef,
-    private subsService: SubscribersService
+    private subsService: SubscribersService,
+    public dialogRef: MatDialogRef<DialogAddSubsComponent>
   ) {}
   ngOnInit() {
     this.addMoreSubs();
@@ -38,11 +41,19 @@ export class DialogAddSubsComponent implements OnInit {
     const formDataList = this.formComponents.map(
       (formComponent) => formComponent.newSubsForm.value
     );
-    console.log(formDataList);
-    this.subsService
-      .createNewsSubscribers(formDataList)
-      .subscribe((resp: any) => {
-        console.log(resp);
-      });
+
+    const dataForApi = {
+      Subscribers: formDataList,
+    };
+    console.log(dataForApi);
+    this.subsService.createNewsSubscribers(dataForApi).subscribe(
+      (resp: any) => {
+        this.message = `Subscriptores agregado con exito`;
+        this.dialogRef.close();
+      },
+      (error) => {
+        this.message = error;
+      }
+    );
   }
 }
