@@ -21,14 +21,14 @@ export class SubscribersComponent implements OnInit {
   countData!: number;
   constructor(
     private subsService: SubscribersService,
-    private route: Router,
     public dialog: MatDialog
   ) {}
   displayedColumns: string[] = ['Id', 'Name', 'Email', 'CountryName'];
-  currentPage = 0; // Página actual
-  pageSize = 5; // Tamaño de página predeterminado (puedes ajustarlo según tus necesidades)
-  pageSizeOptions: number[] = [5, 10, 15]; // Opciones de tamaño de página
-
+  currentPage = 0; // actual page
+  pageSize = 5;
+  pageSizeOptions: number[] = [5, 10, 15];
+  sortOrder: string = '';
+  sortType: number = 0;
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
