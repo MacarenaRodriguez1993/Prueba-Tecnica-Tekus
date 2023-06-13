@@ -1,6 +1,8 @@
 <div class="subscribers">
   <h2>List Subscribers</h2>
-
+  <button mat-raised-button color="accent" (click)="openDialog()">
+    Add Subs
+  </button>
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource">
       <!-- Position Column -->

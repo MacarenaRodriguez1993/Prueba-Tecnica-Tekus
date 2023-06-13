@@ -7,6 +7,8 @@ import {
 import { MatTableDataSource } from '@angular/material/table';
 import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { MatDialog } from '@angular/material/dialog';
+import { DialogAddSubsComponent } from '../../components/dialog-add-subs/dialog-add-subs.component';
 
 @Component({
   selector: 'app-subscribers',
@@ -17,7 +19,11 @@ export class SubscribersComponent implements OnInit {
   subscribers: TableSubscriber[] = [];
   dataSource!: MatTableDataSource<TableSubscriber>;
   countData!: number;
-  constructor(private subsService: SubscribersService, private route: Router) {}
+  constructor(
+    private subsService: SubscribersService,
+    private route: Router,
+    public dialog: MatDialog
+  ) {}
   displayedColumns: string[] = ['Id', 'Name', 'Email', 'CountryName'];
   currentPage = 0; // Página actual
   pageSize = 5; // Tamaño de página predeterminado (puedes ajustarlo según tus necesidades)
@@ -60,5 +66,9 @@ export class SubscribersComponent implements OnInit {
     this.currentPage = event.pageIndex;
     this.pageSize = event.pageSize;
     this.getSubscribers();
+  }
+  // Open Dialog CREATE SUBSCRIBERS
+  openDialog() {
+    this.dialog.open(DialogAddSubsComponent);
   }
 }

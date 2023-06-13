@@ -13,6 +13,8 @@ import { ListSubscriberComponent } from './Subscribers/components/list-subscribe
 import { AngularMaterialModule } from './angular-material/angular-material.module';
 import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
+import { DialogAddSubsComponent } from './Subscribers/components/dialog-add-subs/dialog-add-subs.component';
+import { FormAddSubsComponent } from './Subscribers/components/form-add-subs/form-add-subs.component';
 
 @NgModule({
   declarations: [
@@ -23,6 +25,8 @@ import { ReactiveFormsModule } from '@angular/forms';
     FooterComponent,
     ListSubscriberComponent,
     FormLoginComponent,
+    DialogAddSubsComponent,
+    FormAddSubsComponent,
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,34 @@
+<form class="form-add" [formGroup]="newSubsForm">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input type="text" matInput formControlName="Name" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input type="email" matInput formControlName="Email" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>CountryCode</mat-label>
+    <input type="text" matInput formControlName="CountryCode" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>PhoneNumber</mat-label>
+    <input type="number" matInput formControlName="PhoneNumber" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>JobTitle</mat-label>
+    <input type="text" matInput formControlName="JobTitle" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Area</mat-label>
+    <input type="text" matInput formControlName="Area" />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Topics</mat-label>
+    <input type="text" matInput formControlName="Topics" />
+  </mat-form-field>
+
+  <button mat-stroked-button color="warn" (click)="getFormData()">
+    <mat-icon>delete</mat-icon>
+  </button>
+</form>
