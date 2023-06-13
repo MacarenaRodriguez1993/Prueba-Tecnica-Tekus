@@ -5,10 +5,10 @@ import {
   TableSubscriber,
 } from '../../models/subscribers.interface';
 import { MatTableDataSource } from '@angular/material/table';
-import { Router } from '@angular/router';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { MatDialog } from '@angular/material/dialog';
 import { DialogAddSubsComponent } from '../../components/dialog-add-subs/dialog-add-subs.component';
+import { DialogUpdateSubsComponent } from '../../components/dialog-update-subs/dialog-update-subs.component';
 
 @Component({
   selector: 'app-subscribers',
@@ -23,12 +23,14 @@ export class SubscribersComponent implements OnInit {
     private subsService: SubscribersService,
     public dialog: MatDialog
   ) {}
-  displayedColumns: string[] = ['Id', 'Name', 'Email', 'CountryName'];
+  displayedColumns: string[] = ['Id', 'Name', 'Email', 'CountryName', 'Action'];
   currentPage = 0; // actual page
   pageSize = 5;
   pageSizeOptions: number[] = [5, 10, 15];
   sortOrder: string = '';
   sortType: number = 0;
+  dataApi: any;
+  message: string = '';
   @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   ngAfterViewInit() {
@@ -91,5 +93,24 @@ export class SubscribersComponent implements OnInit {
   getSubscribersSorted(): void {
     this.currentPage = 0;
     this.getSubscribers();
+  }
+
+  //edit subscriber
+  updateSubs(id: number): void {
+    this.subsService.getSubscriberById(id).subscribe((sub: Subscriber) => {
+      this.dialog.open(DialogUpdateSubsComponent, { data: sub });
+    });
+  }
+  deleteSubs(id: number): void {
+    if (confirm('Are you sure to delete this subscriber??')) {
+      this.subsService.deleteSubscriberById(id).subscribe(
+        (sub: any) => {
+          this.message = sub;
+        },
+        (error) => {
+          this.message = error;
+        }
+      );
+    }
   }
 }

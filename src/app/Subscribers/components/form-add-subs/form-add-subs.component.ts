@@ -26,10 +26,6 @@ export class FormAddSubsComponent implements OnInit {
     });
   }
   getFormData(): void {
-    //const formData = this.newSubsForm.value;
-    // const dataForApi = {
-    // Subscribers: [this.newSubsForm],
-    // };
     this.formDataEvent.emit(this.newSubsForm);
   }
 }

@@ -15,6 +15,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { DialogAddSubsComponent } from './Subscribers/components/dialog-add-subs/dialog-add-subs.component';
 import { FormAddSubsComponent } from './Subscribers/components/form-add-subs/form-add-subs.component';
+import { DialogUpdateSubsComponent } from './Subscribers/components/dialog-update-subs/dialog-update-subs.component';
 
 @NgModule({
   declarations: [
@@ -27,6 +28,7 @@ import { FormAddSubsComponent } from './Subscribers/components/form-add-subs/for
     FormLoginComponent,
     DialogAddSubsComponent,
     FormAddSubsComponent,
+    DialogUpdateSubsComponent,
   ],
   imports: [
     BrowserModule,
